@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+import tempfile
 
 from io import StringIO
 
@@ -9,25 +10,14 @@ st.markdown("<h3 style='text-align: left; color: black;'><i>Insert project descr
 
 st.divider()  # Draws a horizontal line
 
+tmp_path = ""
 with st.container(horizontal=False):
-    # Image browser
-    uploaded_file = st.file_uploader("Choose an image")
+    # Image browser and create a tmp path in order to use it in our prediction function
+    uploaded_file = st.file_uploader("Choose an image", type=["jpg"])
     if uploaded_file is not None:
-        # To read file as bytes:
-        bytes_data = uploaded_file.getvalue()
-        st.write(bytes_data)
-
-        # To convert to a string based IO:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        st.write(stringio)
-
-        # To read file as string:
-        string_data = stringio.read()
-        st.write(string_data)
-
-        # Can be used wherever a "file-like" object is accepted:
-        dataframe = pd.read_csv(uploaded_file)
-        st.write(dataframe)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
+            tmp.write(uploaded_file.read())
+            tmp_path = tmp.name
 
     st.space(size="small")
 
