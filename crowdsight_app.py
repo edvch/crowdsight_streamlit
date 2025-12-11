@@ -19,7 +19,6 @@ if uploaded_file is not None:
             tmp.write(uploaded_file.read())
             tmp_path = tmp.name
 
-st.write(tmp_path)
 st.space(size="small")
 
 # Prediction type
@@ -33,8 +32,6 @@ option = st.selectbox(
 st.space(size="small")
 
 if st.button("Let's compute"):
-        st.markdown("<p style='text-align: left; color: red;'><i>I'm doing nothing for the moment, \
-        please code some actions</i></p>", unsafe_allow_html=True)
 
         st.divider()  # Draws a horizontal line
 
@@ -47,14 +44,12 @@ if st.button("Let's compute"):
             col1.image(tmp_path)
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
             col2.write(f"<p style='text-align: center; color: black;'>\
-                    The predicted number of people in this image is: <br> 321\
-                        </br></p>",unsafe_allow_html=True)
+                    The predicted number of people in this image is: <br> 321</br></p>",unsafe_allow_html=True)
 
             col2.write(f"<p style='text-align: center; color: black;'>\
-                    The real number of people in this image is: <br> 578\
-                        </br></p>",unsafe_allow_html=True)
+                    The real number of people in this image is: <br> 578 </br></p>",unsafe_allow_html=True)
 
         elif option == 'Human localisation':
             col1.image(tmp_path)
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
-            col2.image('/Users/edvch/Desktop/tennis_court_pred.jpg')
+            col2.image('/Users/edvch/Desktop/people_linedup_column_pred.jpg')
