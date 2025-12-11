@@ -52,4 +52,4 @@ if st.button("Let's compute"):
         elif option == 'Human localisation':
             col1.image(tmp_path)
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
-            col2.image('/Users/edvch/Desktop/people_linedup_column_pred.jpg')
+            col2.image("/Users/edvch/Desktop/people_linedup_column_raw.jpg")
