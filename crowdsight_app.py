@@ -19,6 +19,7 @@ if uploaded_file is not None:
             tmp.write(uploaded_file.read())
             tmp_path = tmp.name
 
+st.write(tmp_path)
 st.space(size="small")
 
 # Prediction type
@@ -43,7 +44,7 @@ if st.button("Let's compute"):
         col1.markdown("<p style='text-align: center;'><i>Image you selected</i></p>", unsafe_allow_html=True)
 
         if option == 'Human count':
-            col1.image('/Users/edvch/Desktop/school_event_raw.jpg')
+            col1.image(tmp_path)
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
             col2.write(f"<p style='text-align: center; color: black;'>\
                     The predicted number of people in this image is: <br> 321\
@@ -54,6 +55,6 @@ if st.button("Let's compute"):
                         </br></p>",unsafe_allow_html=True)
 
         elif option == 'Human localisation':
-            col1.image('/Users/edvch/Desktop/tennis_court_raw.jpg')
+            col1.image(tmp_path)
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
             col2.image('/Users/edvch/Desktop/tennis_court_pred.jpg')
