@@ -3,16 +3,8 @@ import requests
 import pandas as pd
 import numpy as np
 import tempfile
-import cv2
 
 from io import StringIO
-
-def draw_points(img_path, coords, radius=5):
-    img_loaded = cv2.imread(img_path)
-    img = img_loaded.copy()
-    for x, y in coords:
-        cv2.circle(img, (int(x), int(y)), radius, (0, 0, 255), -1)
-    return img
 
 st.set_page_config(layout="wide")
 
