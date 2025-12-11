@@ -40,9 +40,9 @@ option = st.selectbox(
 if option:
     st.badge(f"You selected: {option}", color="green")
     if option == 'Human count':
-        url = 'https://crowdsight-846239375882.europe-west9.run.app/human_count_pred'
+        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/human_count_pred'
     elif option == 'Human localisation':
-        url = 'https://crowdsight-846239375882.europe-west9.run.app/vgg_pred'
+        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
 
 st.space(size="small")
 
