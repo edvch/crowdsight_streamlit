@@ -42,8 +42,7 @@ if option:
     if option == 'Human count':
         url = 'https://crowdsightlive-846239375882.europe-west9.run.app/human_count_pred'
     elif option == 'Human localisation':
-        url = 'http://127.0.0.1:8000/vgg_pred'
-        #url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
+        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
 
 st.space(size="small")
 
