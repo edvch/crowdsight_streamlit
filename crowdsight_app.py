@@ -29,43 +29,31 @@ option = st.selectbox(
         placeholder="Select method...",
         width=700)
 
-if option:
-    st.badge(f"You selected: {option}", color="green")
-    if option == 'Human count':
-        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/human_count_pred'
-    elif option == 'Human localisation':
-        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
-
 st.space(size="small")
 
-if uploaded_file:
-    params = {'filepath':tmp_path}
-
 if st.button("Let's compute"):
-    if url:
-        response = requests.get(url, params=params)
-        st.write(f'RESPONSE = {response}')
-
-    else:
         st.markdown("<p style='text-align: left; color: red;'><i>I'm doing nothing for the moment, \
         please code some actions</i></p>", unsafe_allow_html=True)
 
-    if uploaded_file:
         st.divider()  # Draws a horizontal line
 
         st.markdown("<h3 style='text-align: center; color: black;'>Compute results</h3>", unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)
         col1.markdown("<p style='text-align: center;'><i>Image you selected</i></p>", unsafe_allow_html=True)
-        col1.image(tmp_path)
 
         if option == 'Human count':
+            col1.image('/Users/edvch/Desktop/school_event_raw.jpg')
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
-            predicted_count = round(float(response.json()['predict_human_count']),2)
             col2.write(f"<p style='text-align: center; color: black;'>\
-                    The number of people in this image is: <br>{predicted_count}\
+                    The predicted number of people in this image is: <br> 321\
+                        </br></p>",unsafe_allow_html=True)
+
+            col2.write(f"<p style='text-align: center; color: black;'>\
+                    The real number of people in this image is: <br> 578\
                         </br></p>",unsafe_allow_html=True)
 
         elif option == 'Human localisation':
+            col1.image('/Users/edvch/Desktop/tennis_court_raw.jpg')
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
-            col2.image(response.json()['img_to_draw'])
+            col2.image('/Users/edvch/Desktop/tennis_court_pred.jpg')
