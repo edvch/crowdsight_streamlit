@@ -42,7 +42,8 @@ if option:
     if option == 'Human count':
         url = 'https://crowdsightlive-846239375882.europe-west9.run.app/human_count_pred'
     elif option == 'Human localisation':
-        url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
+        url = 'http://127.0.0.1:8000/vgg_pred'
+        #url = 'https://crowdsightlive-846239375882.europe-west9.run.app/vgg_pred'
 
 st.space(size="small")
 
@@ -52,7 +53,7 @@ if uploaded_file:
 if st.button("Let's compute"):
     if url:
         response = requests.get(url, params=params)
-        st.write(response)
+        st.write(f'RESPONSE = {response.text}')
 
     else:
         st.markdown("<p style='text-align: left; color: red;'><i>I'm doing nothing for the moment, \
