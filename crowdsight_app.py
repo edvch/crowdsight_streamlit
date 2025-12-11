@@ -32,7 +32,7 @@ st.space(size="small")
 # Prediction type
 option = st.selectbox(
         "Which methode do you want to use?",
-        ("Human count", "Human localisation", "Both"),
+        ("Human count", "Human localisation"),
         index=None,
         placeholder="Select method...",
         width=700)
@@ -42,9 +42,7 @@ if option:
     if option == 'Human count':
         url = 'https://crowdsight-846239375882.europe-west9.run.app/human_count_pred'
     elif option == 'Human localisation':
-        url = 'http://127.0.0.1:8000/vgg_pred'
-    else:
-        url = 'https://crowdsight-846239375882.europe-west9.run.app/yolo_pred'
+        url = 'https://crowdsight-846239375882.europe-west9.run.app/vgg_pred'
 
 st.space(size="small")
 
@@ -54,6 +52,8 @@ if uploaded_file:
 if st.button("Let's compute"):
     if url:
         response = requests.get(url, params=params)
+        st.write(response)
+
     else:
         st.markdown("<p style='text-align: left; color: red;'><i>I'm doing nothing for the moment, \
         please code some actions</i></p>", unsafe_allow_html=True)
@@ -76,8 +76,4 @@ if st.button("Let's compute"):
 
         elif option == 'Human localisation':
             col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
-            coords = list(zip(response.json()['x_coord'], response.json()['y_coord']))
-            img_drawn = draw_points(tmp_path, coords)
-            st.image(cv2.cvtColor(img_drawn, cv2.COLOR_BGR2RGB))
-        else:
-            col2.markdown("<p style='text-align: center;'><i>Result</i></p>", unsafe_allow_html=True)
+            col2.image(response.json()['img_to_draw'])
