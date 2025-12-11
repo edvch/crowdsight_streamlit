@@ -44,7 +44,7 @@ if uploaded_file:
 if st.button("Let's compute"):
     if url:
         response = requests.get(url, params=params)
-        st.write(f'RESPONSE = {response.text}')
+        st.write(f'RESPONSE = {response}')
 
     else:
         st.markdown("<p style='text-align: left; color: red;'><i>I'm doing nothing for the moment, \
